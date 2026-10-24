@@ -1,0 +1,4 @@
+# DNS-auth signing key and mcp-publisher tokens: never commit
+*.pem
+.mcpregistry_*
+.DS_Store
