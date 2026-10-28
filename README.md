@@ -14,8 +14,9 @@ https://mcp.recordhtml.com
 Streamable HTTP, sign in with OAuth. There is nothing to install or run on your machine.
 
 > This repository holds the server's listing in the
-> [MCP Registry](https://registry.modelcontextprotocol.io) (`com.recordhtml/mcp`). The server
-> itself is hosted and not open source. Full documentation: https://recordhtml.com/docs/mcp
+> [MCP Registry](https://registry.modelcontextprotocol.io) (`com.recordhtml/mcp`), the Cursor
+> plugin and the Gemini CLI extension. The server itself is hosted and not open source; the files in
+> this repository are MIT-licensed. Full documentation: https://recordhtml.com/docs/mcp
 
 ## Connect
 
@@ -31,7 +32,7 @@ claude mcp add --transport http recordhtml https://mcp.recordhtml.com
 **Claude (claude.ai and Claude Desktop)**: Settings → Connectors → Add custom connector, with
 `https://mcp.recordhtml.com` as the URL, then Connect.
 
-**Cursor** (`~/.cursor/mcp.json`):
+**Cursor** (`~/.cursor/mcp.json`, or install the plugin in this repository):
 
 ```json
 {
@@ -39,6 +40,13 @@ claude mcp add --transport http recordhtml https://mcp.recordhtml.com
     "recordhtml": { "url": "https://mcp.recordhtml.com" }
   }
 }
+```
+
+**Gemini CLI**: install the extension, start `gemini` and sign in when the browser opens (or run
+`/mcp auth recordhtml`).
+
+```sh
+gemini extensions install https://github.com/recordHTML/mcp
 ```
 
 **VS Code** (`.vscode/mcp.json`):
@@ -75,9 +83,29 @@ claude mcp add --transport http recordhtml https://mcp.recordhtml.com \
 | `list_recordings` | Your recordings, newest first. |
 | `delete_recording` | Delete a recording's video files for good. |
 
-Example prompt: *Record https://example.com/banner/ at 300×600 for 15 seconds as an MP4.*
+Example prompts:
+
+- *Record https://recordhtml.com at 1280×720 for 5 seconds as an MP4.*
+- *Write a 300×250 HTML5 banner that fades in the headline "Summer Sale" and a "Shop now" button, then record it as a 6 second GIF.*
+
+## Privacy and support
+
+- Privacy policy: https://recordhtml.com/privacy (what the MCP server receives is covered under
+  "AI assistants and the MCP server").
+- Terms: https://recordhtml.com/terms
+- Support: hello@recordhtml.com or https://recordhtml.com/contact
+
+## What is in this repository
+
+| File | Used by |
+| --- | --- |
+| `server.json` | The [MCP Registry](https://registry.modelcontextprotocol.io) listing (`com.recordhtml/mcp`) |
+| `.cursor-plugin/plugin.json`, `mcp.json`, `assets/` | The Cursor plugin |
+| `gemini-extension.json`, `GEMINI.md` | The Gemini CLI extension (`gemini extensions install https://github.com/recordHTML/mcp`) |
 
 ## Publishing (maintainers)
+
+### MCP Registry
 
 The server is published under the `com.recordhtml` namespace, proven by a DNS TXT record at the
 apex of `recordhtml.com`. You need [`mcp-publisher`](https://github.com/modelcontextprotocol/registry)
@@ -107,3 +135,10 @@ curl -s "https://registry.modelcontextprotocol.io/v0.1/servers?search=com.record
 `version` follows the server's own version (`MCP_SERVER_VERSION` in html-recorder-web). To
 republish with only metadata changes, use a prerelease such as `1.0.0-1`. A version can't be
 published twice.
+
+### Gemini CLI extension and Cursor plugin
+
+Keep `version` in `gemini-extension.json` and `.cursor-plugin/plugin.json` in step, and tag each
+release (`git tag v1.0.0 && git push --tags`, or a GitHub release with the same tag). The Gemini
+gallery indexes this repository through its `gemini-cli-extension` topic. Cursor reviews every
+plugin update before it reaches the Marketplace.

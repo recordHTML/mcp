@@ -1,0 +1,11 @@
+{
+  "name": "recordhtml",
+  "version": "1.0.0",
+  "description": "Record web pages and HTML5 creatives to MP4, WebM or GIF in a real browser. Uses RecordHTML's hosted MCP server; you sign in with OAuth.",
+  "mcpServers": {
+    "recordhtml": {
+      "httpUrl": "https://mcp.recordhtml.com"
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}
