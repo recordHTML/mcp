@@ -1,6 +1,7 @@
 # RecordHTML MCP server
 
 [![RecordHTML MCP connector – tool definition quality and endpoint health on Glama](https://glama.ai/mcp/connectors/com.recordhtml.mcp/record-html/badges/score.svg)](https://glama.ai/mcp/connectors/com.recordhtml.mcp/record-html)
+[![M8ven Score](https://m8ven.ai/badge/mcp/recordhtml-mcp-nlgc4h?v=5693737c36ad7f2ca63d7dc13af819a4)](https://m8ven.ai/mcp/recordhtml-mcp-nlgc4h?s=readme)
 
 Connect [RecordHTML](https://recordhtml.com) to an AI assistant and ask it for videos. The hosted
 MCP server records web pages and HTML5 creatives (banners, ads, animations, landing pages) to MP4,
